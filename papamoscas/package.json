@@ -1,0 +1,16 @@
+{
+  "name": "papamoscas-nodejs-showcase",
+  "version": "0.0.1",
+  "description": "This is a sample API server of papamoscas.",
+  "main": "index.js",
+  "keywords": [
+    "swagger"
+  ],
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "connect": "^3.2.0",
+    "js-yaml": "^3.3.0",
+    "swagger-tools": "0.9.*"
+  }
+}

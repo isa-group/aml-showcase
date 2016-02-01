@@ -1,0 +1,129 @@
+---
+swagger: "2.0"
+info:
+  description: "This is a sample API server of papamoscas."
+  version: "0.0.1"
+  title: "Papamoscas node API"
+  contact:
+    name: "API Support"
+    url: "http://governify.io"
+    email: "darteaga@us.es"
+  license:
+    name: "ISC"
+    url: "/license.txt"
+basePath: "/api/v1"
+produces:
+- "application/json"
+paths:
+  /birds:
+    x-swagger-router-controller: Birds
+    get:
+      operationId: birdsGet
+      tags:
+      - "birds"
+      summary: "Get array of all Birds"
+      parameters: []
+      responses:
+        200:
+          description: "An array of birds."
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Bird"
+        default:
+          description: "Unexpected error"
+    post:
+      operationId: birdsPost
+      tags:
+      - "birds"
+      summary: "Create a bird"
+      parameters:
+      - in: "body"
+        name: "bird"
+        description: "bird to update in system"
+        required: true
+        schema:
+          $ref: "#/definitions/Bird"
+      responses:
+        200:
+          description: "Bird has been created successful."
+        default:
+          description: "Unexpected error"
+    put:
+      operationId: birdsPut
+      tags:
+      - "birds"
+      summary: "Update a bird"
+      parameters:
+      - in: "body"
+        name: "bird"
+        description: "bird to update in system"
+        required: true
+        schema:
+          $ref: "#/definitions/Bird"
+      responses:
+        200:
+          description: "Bird has been updated successful."
+        default:
+          description: "Unexpected error"
+    delete:
+      operationId: birdsDelete
+      tags:
+      - "birds"
+      summary: "Delete a bird"
+      parameters:
+      - in: "body"
+        name: "bird"
+        description: "bird to update in system"
+        required: true
+        schema:
+          $ref: "#/definitions/Bird"
+      responses:
+        200:
+          description: "Bird has been deleted successful."
+        default:
+          description: "Unexpected error"
+  /birds/{id}:
+    x-swagger-router-controller: Birds
+    get:
+      operationId: birdsIdGet
+      tags:
+      - "birds"
+      summary: "Get bird for by id"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "Identifier of one bird"
+        required: true
+        type: "number"
+        format: "int64"
+      responses:
+        200:
+          description: "bird."
+          schema:
+            $ref: "#/definitions/Bird"
+        default:
+          description: "Unexpected error"
+definitions:
+  Bird:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      specie:
+        type: "string"
+      place:
+        type: "string"
+      legDiameter:
+        type: "number"
+        format: "double"
+      wingSize:
+        type: "number"
+        format: "double"
+      eggs:
+        type: "number"
+        format: "int64"
+      hatches:
+        type: "number"
+        format: "int64"
