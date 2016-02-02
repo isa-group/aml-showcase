@@ -6,10 +6,15 @@ var swaggerTools = require('swagger-tools');
 var jsyaml = require('js-yaml');
 var fs = require('fs');
 var bodyParser = require('body-parser');
-
+var governify = require('governify');
 
 var serverPort = 9999;
 
+var optionsGovern = {
+    datastore : "http://datastore.governify.io/api/v5/"
+}
+
+app.use(governify.control(optionsGovern));
 
 app.use(bodyParser.json());
 // swaggerRouter configuration
